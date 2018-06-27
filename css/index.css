@@ -3,6 +3,9 @@ html,body{
 	height: 100%;
 	padding: 0;
 	margin: 0;
-	background-color: gray;
+	/*background-color: gray;*/
 	background: url(../image/bg.jpg);
+	/*background-position: cover;*/
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
 }
