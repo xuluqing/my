@@ -7,20 +7,26 @@
 
 </head>
 <body>
-	<p>是我的网站吗</p>
-	<h1 class="my">点我试试**哈哈哈哈</h1>
-	<p>是我的网站吗</p>
-	<p>是我的网站吗</p>
-	<h1>哈哈哈哈</h1>
-	<p>是我的网站吗</p><p>是我的网站吗</p>
-	<h1>哈哈哈哈</h1>
-	<p>是我的网站吗</p>
+	<h1>欢迎你</h1>
+	<p class="time"></p>
+	<h2 class="my">点击有惊喜</h2>
+	<div class="box">
+		<p class="tu"></p>
+	</div>
 	<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script  type="text/javascript" charset="utf-8" >
-		
+		setInterval(function(){
+                $(".time").text('当前时间：' + new Date().toLocaleString());
+            },1000);
 		$('.my').click(function(){
-			$("h1").css('color','red');
+
+			$("h1").css('color','blue');
+			$(this).hide();
+
+
 		})
+
+
 	</script>
 </body>
 </html>
