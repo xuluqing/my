@@ -12,25 +12,87 @@
 
 </head>
 <body>
-	<h1>欢迎你</h1>
+	<h1>西海情歌</h1>
 	<p class="time"></p>
-	<h2 class="my">点击有惊喜</h2>
+	<!-- <h2 class="my">点击有惊喜</h2> -->
 	<div class="box">
-		<p class="tu"></p>
+		<audio class="music" src="./music/xihai.mp3" autoplay="autoplay" loop="loop"></audio>
+		<p class="tu">
+					自你离开以后<br>
+					从此就丢了温柔<br>
+					等待在这雪山路漫长<br>
+					听寒风呼啸依旧<br>
+					一眼望不到边<br>
+					风似刀割我的脸<br>
+					等不到西海天际蔚蓝<br>
+					无言着苍茫的高原<br>
+					还记得你<br>
+					答应过我不会让我把你找不见<br>
+					可你跟随<br>
+					那南归的候鸟飞得那么远<br>
+					爱象风筝断了线<br>
+					拉不住你许下的诺言<br>
+					我在苦苦等待<br>
+					雪山之巅温暖的春天<br>
+					等待高原<br>
+					冰雪融化之后归来的孤雁<br>
+					爱再难以续情缘<br>
+					回不到我们的从前
+		</p>
+		<!-- <<textarea name="">ssssssssssssss</textarea> -->
 	</div>
+	
 	<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script  type="text/javascript" charset="utf-8" >
+
+		var n=-1;
 		setInterval(function(){
                 $(".time").text('当前时间：' + new Date().toLocaleString());
-            },1000);
-		$('.my').click(function(){
+                //固定颜色选择
+    			//var clo=["green","blue","yellow","pink","LightPink","Crimson","LavenderBlush"]
+				// n++;
+				// console.log(n)
+				// $(".tu").css("color",clo[n]);
+				// if(n==7){
+				// 	n=0;
+				// }  
+				//随机颜色选择
+				  var r=Math.floor(Math.random()*256);
+                  var g=Math.floor(Math.random()*256);
+                  var b=Math.floor(Math.random()*256);
+				  var rgba="rgb("+r+','+g+','+b+")"; //返回rgba(r,g,b,a)格式颜色
+				  $(".tu").css("color",rgba);
+				          
+			},1000);
 
+		$(window).click(function(){	
 			$("h1").css('color','blue');
-			$(this).hide();
+			// $(".my").hide();
+			var audio=$(".music")[0];
+			// console.log(audio);
+			audio.play();
+			$(".music").css('display',"block");
+			$(".tu").show();
 
+		});
 
-		})
+	
+	
+			
+			
+	
+			
+		
 
+		// $(".btn").click(function(){
+		// 	// var audio=document.querySelector(".music");
+		// 	var audio=$(".music")[0]; //获取audio需要[0]，因为js操作获得的是audio对象，jQuery选择器获得的是jQuery对象，[0]对象的才是对应的节点对象，所以不能直接使用jQuery对象去操作。
+		
+		// 		audio.play();
+		// console.log(audio);
+		// })
+
+		
 
 	</script>
 </body>
