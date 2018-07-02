@@ -56,36 +56,36 @@
 	
 	<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script  type="text/javascript" charset="utf-8" >
-		var appid  =  '49361';
-		var secret =   'd296e33221b34544bd4b78f0ad800816';
-		var tianqi_url = "http://route.showapi.com/9-2";
-		window.onload=function(){
-			$.ajax({
-			    type: 'post',
-			    url: 'http://route.showapi.com/9-2',
-			    dataType: 'json',
-			    data: {
-			        // "showapi_timestamp": formatterDateTime(),
-			        "showapi_appid": appid, //这里需要改成自己的appid
-			        "showapi_sign": secret,  //这里需要改成自己的应用的密钥secret
-			        "area":"都江堰"      //城市名称的参数,必要字段
-			    },
+		// var appid  =  '49361';
+		// var secret =   'd296e33221b34544bd4b78f0ad800816';
+		// var tianqi_url = "http://route.showapi.com/9-2";
+		// window.onload=function(){
+		// 	$.ajax({
+		// 	    type: 'post',
+		// 	    url: 'http://route.showapi.com/9-2',
+		// 	    dataType: 'json',
+		// 	    data: {
+		// 	        // "showapi_timestamp": formatterDateTime(),
+		// 	        "showapi_appid": appid, //这里需要改成自己的appid
+		// 	        "showapi_sign": secret,  //这里需要改成自己的应用的密钥secret
+		// 	        "area":"都江堰"      //城市名称的参数,必要字段
+		// 	    },
 
-			    error: function(XmlHttpRequest, textStatus, errorThrown) {
-			        alert("操作失败!");
-			    },
-			    success: function(data) {
-			    	// console.log(data);//console变量在ie低版本下不能用 0为成功 -1错误 -2 余额不足
-			     //    console.log(data.showapi_res_body.cityInfo.c3);	       
-			   		// console.log(data.showapi_res_body.f1.day_weather_pic);	
-			        $(".city").text("城市:"+data.showapi_res_body.cityInfo.c3);
-			        // $(".riqi").text("日期:"+data.showapi_res_body.f1.day);
-			        $(".wendu").text("温度:"+data.showapi_res_body.f1.day_air_temperature+"℃");
-			        $(".tianqi").text("天气:"+data.showapi_res_body.f1.day_weather);
-			        $(".tuu").attr("src",data.showapi_res_body.f1.day_weather_pic);     
-			    }
-			});
-		}
+		// 	    error: function(XmlHttpRequest, textStatus, errorThrown) {
+		// 	        alert("操作失败!");
+		// 	    },
+		// 	    success: function(data) {
+		// 	    	// console.log(data);//console变量在ie低版本下不能用 0为成功 -1错误 -2 余额不足
+		// 	     //    console.log(data.showapi_res_body.cityInfo.c3);	       
+		// 	   		// console.log(data.showapi_res_body.f1.day_weather_pic);	
+		// 	        $(".city").text("城市:"+data.showapi_res_body.cityInfo.c3);
+		// 	        // $(".riqi").text("日期:"+data.showapi_res_body.f1.day);
+		// 	        $(".wendu").text("温度:"+data.showapi_res_body.f1.day_air_temperature+"℃");
+		// 	        $(".tianqi").text("天气:"+data.showapi_res_body.f1.day_weather);
+		// 	        $(".tuu").attr("src",data.showapi_res_body.f1.day_weather_pic);     
+		// 	    }
+		// 	});
+		// }
 		
 
 
@@ -120,6 +120,36 @@
 				// console.log(audio);
 				audio.play();
 				$(".yin").css('display',"block");
+
+				var appid  =  '49361';
+				var secret =   'd296e33221b34544bd4b78f0ad800816';
+				var tianqi_url = "http://route.showapi.com/9-2";
+					$.ajax({
+					    type: 'post',
+					    url: 'http://route.showapi.com/9-2',
+					    dataType: 'json',
+					    data: {
+					        // "showapi_timestamp": formatterDateTime(),
+					        "showapi_appid": appid, //这里需要改成自己的appid
+					        "showapi_sign": secret,  //这里需要改成自己的应用的密钥secret
+					        "area":"都江堰"      //城市名称的参数,必要字段
+					    },
+
+					    error: function(XmlHttpRequest, textStatus, errorThrown) {
+					        alert("操作失败!");
+					    },
+					    success: function(data) {
+					    	// console.log(data);//console变量在ie低版本下不能用 0为成功 -1错误 -2 余额不足
+					     //    console.log(data.showapi_res_body.cityInfo.c3);	       
+					   		// console.log(data.showapi_res_body.f1.day_weather_pic);	
+					        $(".city").text("城市:"+data.showapi_res_body.cityInfo.c3);
+					        // $(".riqi").text("日期:"+data.showapi_res_body.f1.day);
+					        $(".wendu").text("温度:"+data.showapi_res_body.f1.day_air_temperature+"℃");
+					        $(".tianqi").text("天气:"+data.showapi_res_body.f1.day_weather);
+					        $(".tuu").attr("src",data.showapi_res_body.f1.day_weather_pic);     
+					    }
+					});
+
 
 			});
 
