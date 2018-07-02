@@ -14,9 +14,12 @@
 <body>
 	<h1>西海情歌</h1>
 	<p class="time"></p>
-	<!-- <h2 class="my">点击有惊喜</h2> -->
+	<h2 class="my">点一下会发生什么</h2>
 	<div class="box">
-		<audio class="music" src="./music/xihai.mp3" autoplay="autoplay" loop="loop"></audio>
+		<p class="yinyue"><audio class="music" src="./music/xihai.mp3" autoplay="autoplay" loop="loop" controls="controls"></audio>
+			音量<input class="vol" type="range"  step="0.1" min="0" max="1"> 
+			<!-- step设置每次拖动的值 min最小拖动值 max最大拖动值 -->
+		</p>
 		<p class="tu">
 					自你离开以后<br>
 					从此就丢了温柔<br>
@@ -65,18 +68,23 @@
 				          
 			},1000);
 
-		$(window).click(function(){	
+		$(".my").click(function(){	
 			$("h1").css('color','blue');
-			// $(".my").hide();
+			$(".my").hide();
 			var audio=$(".music")[0];
 			// console.log(audio);
 			audio.play();
-			$(".music").css('display',"block");
-			$(".tu").show();
+			$(".yinyue").css('display',"block");
+			// $(".tu").show();
 
 		});
 
-	
+	$(".vol").change(function(){
+		console.log($(".vol").val())
+		var audio=$(".music")[0];
+		audio.volume=$(".vol").val();
+
+	})
 	
 			
 			
