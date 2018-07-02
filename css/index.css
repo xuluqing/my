@@ -3,23 +3,29 @@ html,body{
 	height: 100%;
 	padding: 0;
 	margin: 0;
+	/*border: 2px solid blue;*/
 	/*border:1px solid blue;*/
 	/*background-color: gray;*/
 	background: url(../image/bg.jpg);
 	/*background-position: center;*/
 	background-repeat: no-repeat;
 	background-size:100% 100%;
+	overflow: auto;
 
 }
 .time{
 	color:blue;
+	margin-left: 5px;
 }
 h2{
 	/*margin:auto;*/
 	width: 200px;
 	height: 100px;
 }
-.yinyue{
+audio{
+	display: none;
+}
+.yin{
 	display: none;
 }
 .tu{
@@ -27,5 +33,31 @@ h2{
 	height: 300px;
 	text-align: center;
 	color: #0CFA0C;
-
+}
+.p{
+	color:blue;
+	margin:0;
+	float:left;
+	margin-left: 5px;
+}
+.tuu{
+	display: block;
+	width: 7%;
+}
+.top{
+	width: 500px;
+	height:24px;
+	/*border:1px solid red;*/
+	/*border:1px solid transparent;*/
+}
+.yinyue{
+	margin: 0;
+}
+h6{
+	color: white;
+	margin-left: 5px;
+}
+.vol{
+	display: inline-block;
+	width: 30px;
 }

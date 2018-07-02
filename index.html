@@ -8,21 +8,27 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <meta http-equiv="pragma" content="private">
 	<link rel="stylesheet" href="./css/index.css">
-	<title>第一个页面</title>
+	<title>你相信什么,就会遇见什么</title>
 
 </head>
 <body>
-	<h1>西海情歌</h1>
+	<h1>所见即所得</h1>
+	<h6 class="my">点一下会发生什么?</h6>
 	<p class="time"></p>
-	<h2 class="my">点一下会发生什么</h2>
+	<div class="top">
+		<p class="city p">当前城市:</p>
+		<!-- <p class="riqi p">日期:</p> -->
+		<p class="wendu p">温度:</p>
+		<p class="tianqi p">天气:</p>
+		<img class="tuu p"src="" alt="">
+		<p class="yin p"><input class="vol" type="range" value="0.1" step="0.1" min="0" max="1"></p>
+			<!-- step设置每次拖动的值 min最小拖动值 max最大拖动值 -->
+	</div>
+
 	<div class="box">
-		<p class="yinyue">
-			<audio class="music" src="./music/xihai.mp3" autoplay="autoplay" loop="loop" controls="controls">
+			<audio class="music" src="./music/xihai.mp3"autoplay="autoplay" loop="loop" controls="controls">
 				你的浏览器不支持html5的audio标签
 			</audio>
-			音量<input class="vol" type="range"  step="0.1" min="0" max="1"> 
-			<!-- step设置每次拖动的值 min最小拖动值 max最大拖动值 -->
-		</p>
 		<p class="tu">
 					自你离开以后<br>
 					从此就丢了温柔<br>
@@ -50,45 +56,78 @@
 	
 	<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
 	<script  type="text/javascript" charset="utf-8" >
-	
+		var appid  =  '49361';
+		var secret =   'd296e33221b34544bd4b78f0ad800816';
+		var tianqi_url = "http://route.showapi.com/9-2";
+		window.onload=function(){
+			$.ajax({
+			    type: 'post',
+			    url: 'http://route.showapi.com/9-2',
+			    dataType: 'json',
+			    data: {
+			        // "showapi_timestamp": formatterDateTime(),
+			        "showapi_appid": appid, //这里需要改成自己的appid
+			        "showapi_sign": secret,  //这里需要改成自己的应用的密钥secret
+			        "area":"都江堰"      //城市名称的参数,必要字段
+			    },
+
+			    error: function(XmlHttpRequest, textStatus, errorThrown) {
+			        alert("操作失败!");
+			    },
+			    success: function(data) {
+			    	// console.log(data);//console变量在ie低版本下不能用 0为成功 -1错误 -2 余额不足
+			     //    console.log(data.showapi_res_body.cityInfo.c3);	       
+			   		// console.log(data.showapi_res_body.f1.day_weather_pic);	
+			        $(".city").text("城市:"+data.showapi_res_body.cityInfo.c3);
+			        // $(".riqi").text("日期:"+data.showapi_res_body.f1.day);
+			        $(".wendu").text("温度:"+data.showapi_res_body.f1.day_air_temperature+"℃");
+			        $(".tianqi").text("天气:"+data.showapi_res_body.f1.day_weather);
+			        $(".tuu").attr("src",data.showapi_res_body.f1.day_weather_pic);     
+			    }
+			});
+		}
+		
+
+
+
+
+
+
+
 	$(document).ready(function() {
 		var n=-1;
 		setInterval(function(){
-                $(".time").text('当前时间：' + new Date().toLocaleString());
+                $(".time").text('当前：' + new Date().toLocaleString());
                 //固定颜色选择
-    			//var clo=["green","blue","yellow","pink","LightPink","Crimson","LavenderBlush"]
-				// n++;
+    			var clo=["green","blue","yellow","pink","LightPink","Crimson","LavenderBlush"]
+				n++;
 				// console.log(n)
-				// $(".tu").css("color",clo[n]);
-				// if(n==7){
-				// 	n=0;
-				// }  
+				$("h1").css('color',clo[n]);
+				if(n==7){
+					n=0;
+				}  
 				//随机颜色选择
 				  var r=Math.floor(Math.random()*256);
                   var g=Math.floor(Math.random()*256);
                   var b=Math.floor(Math.random()*256);
 				  var rgba="rgb("+r+','+g+','+b+")"; //返回rgba(r,g,b,a)格式颜色
-				  $(".tu").css("color",rgba);
-				          
+				  $(".tu").css("color",rgba);	          
 			},1000);
 
-		$(".my").click(function(){	
-			$("h1").css('color','blue');
-			$(".my").hide();
-			var audio=$(".music")[0];
-			// console.log(audio);
-			audio.play();
-			$(".yinyue").css('display',"block");
-			// $(".tu").show();
+			$(".my").click(function(){					
+				$(".my").hide();
+				var audio=$(".music")[0];
+				// console.log(audio);
+				audio.play();
+				$(".yin").css('display',"block");
 
-		});
+			});
 
-	$(".vol").change(function(){
-		console.log($(".vol").val())
-		var audio=$(".music")[0];
-		audio.volume=$(".vol").val();
-
-	})
+			$(".vol").change(function(){
+				// console.log($(".vol").val())
+				var audio=$(".music")[0];
+				audio.volume=$(".vol").val();
+			})
 	
 	});
 			
